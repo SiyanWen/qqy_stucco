@@ -14,9 +14,8 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - user_pg_data:/var/lib/postgresql/data
       # Place any *.sql or *.sh in ./initdb; they run once on first boot
-      - ./initdb:/docker-entrypoint-initdb.d:ro
+      - ./initdb:/docker-entrypoint-initdb.d
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U userapp -d userdb"]
       interval: 10s
