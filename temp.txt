@@ -1,0 +1,28 @@
+docker_db:
+
+User(PostgreSQL):
+docker compose -f docker-compose.user-db.yml up -d
+
+CatalogService(mongoDB):
+docker compose -f docker-compose.catalog-db.yml up -d
+
+
+Order(Cassandra):
+docker compose -f docker-compose.order-db.yml up -d
+
+
+
+
+CONTAINER ID   IMAGE           COMMAND                  CREATED       STATUS                 PORTS                                                       NAMES
+5972ebb66ab5   mongo:7         "docker-entrypoint.s…"   4 hours ago   Up 4 hours (healthy)   0.0.0.0:27017->27017/tcp                                    catalog-mongo
+eeed23b6a0dc   cassandra:4.1   "docker-entrypoint.s…"   4 hours ago   Up 4 hours (healthy)   7000-7001/tcp, 7199/tcp, 9160/tcp, 0.0.0.0:9042->9042/tcp   order-cassandra
+3983595cb58d   postgres:16     "docker-entrypoint.s…"   5 hours ago   Up 5 hours (healthy)   0.0.0.0:5432->5432/tcp                    
+                  user-postgres
+
+Kafka:
+
+# For Windows:
+bin\windows\zookeeper-server-start.bat config\zookeeper.properties
+
+# For Linux/Mac:
+bin/zookeeper-server-start.sh config/zookeeper.properties
