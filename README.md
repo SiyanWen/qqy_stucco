@@ -1,2 +1,1 @@
-# qqy_stucco
-Stucco shopping website.
+Gypsum plaster shopping website.
